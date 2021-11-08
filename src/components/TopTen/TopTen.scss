@@ -1,0 +1,118 @@
+.top-ten {
+  padding: 10%;
+  border-radius: 0 0 4.2rem 4.2rem;
+  background: #e3e1dc;
+
+  &__most {
+    display: inline-block;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #291507;
+    position: relative;
+    margin-bottom: 4rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      left: 0;
+      width: 27%;
+      height: 0.4rem;
+      border-radius: 77rem;
+      background: #4d270c;
+    }
+  }
+
+  &__topBox {
+    position: relative;
+  }
+
+  &__heading {
+    font-weight: bold;
+    font-size: 4.8rem;
+    line-height: 5.9rem;
+    color: #291507;
+    max-width: 50%;
+
+    @media (max-width: 48em) {
+      max-width: 100%;
+    }
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    text-align: right;
+    color: rgba(41, 21, 7, 0.6);
+    text-transform: uppercase;
+
+    @media (max-width: 37.5em) {
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    &:hover {
+      color: #7c583e;
+    }
+
+    &:hover span {
+      animation: move 1s ease-in-out infinite alternate;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+
+    @media (max-width: 28em) {
+      justify-content: center;
+    }
+  }
+
+  &__card {
+    width: 22rem;
+    height: 22rem;
+    margin-top: 5rem;
+    transition: transform 0.2s ease-in-out;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 2.4rem;
+      object-fit: cover;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #291507;
+    text-align: center;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1rem);
+  }
+}

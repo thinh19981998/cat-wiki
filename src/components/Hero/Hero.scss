@@ -1,0 +1,136 @@
+.hero {
+  background: url('../../assets/images/HeroImagemd.png') no-repeat;
+  background-size: cover;
+  padding: 10%;
+  border-radius: 4.2rem 4.2rem 0 0;
+}
+
+.heading {
+  color: #fff;
+
+  &__main {
+    display: block;
+    width: 30rem;
+    margin-bottom: 1rem;
+  }
+
+  &__sub {
+    font-weight: 500;
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+
+    color: #ffffff;
+  }
+}
+
+.search {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 5.9rem;
+  position: relative;
+  margin-top: 5.2rem;
+
+  @media (max-width: 48em) {
+    width: 65%;
+  }
+
+  &__input {
+    padding: 2.4rem 2.8rem;
+    border: none;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: #291507;
+    border-radius: inherit;
+
+    &::placeholder {
+      color: #291507;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 5%;
+  }
+
+  &__sugg-container {
+    width: 100%;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    padding: 1rem 1rem;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 2.4rem;
+    z-index: 1;
+  }
+
+  &__suggestion {
+    width: 100%;
+    height: auto;
+    max-height: 22rem;
+    list-style: none;
+    overflow-y: auto;
+    animation: searchItems 300ms ease-in;
+
+    li {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      border-radius: 2.2rem;
+      a {
+        padding: 2rem;
+        display: inline-block;
+        width: 100%;
+        color: #000000;
+      }
+
+      &:hover {
+        background: #ccc;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #bdbdbd;
+      border-radius: 2rem;
+      height: 6rem;
+    }
+  }
+
+  .no-result {
+    color: #ccc;
+    &:hover {
+      background: unset;
+    }
+  }
+}
+
+@keyframes searchItems {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  30% {
+    opacity: 0.3;
+  }
+
+  60% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

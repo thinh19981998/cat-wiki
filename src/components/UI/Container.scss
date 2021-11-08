@@ -1,0 +1,11 @@
+.container {
+  max-width: 124.8rem;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 75em) {
+    padding: 0 2rem;
+  }
+}

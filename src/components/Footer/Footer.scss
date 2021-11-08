@@ -1,0 +1,19 @@
+.footer {
+  background: #000000;
+  border-radius: 4.2rem 4.2rem 0 0;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+
+  a {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  &__logo {
+    margin-left: 8rem;
+  }
+}
