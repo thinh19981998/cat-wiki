@@ -15,5 +15,9 @@
 
   &__logo {
     margin-left: 8rem;
+
+    @media (max-width: 26.5625em) {
+      margin-left: unset;
+    }
   }
 }

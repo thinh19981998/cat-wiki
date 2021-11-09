@@ -4,4 +4,8 @@
   line-height: 4.4rem;
   margin-bottom: 5.2rem;
   color: #291507;
+
+  @media (max-width: 46.25em) {
+    text-align: center;
+  }
 }
