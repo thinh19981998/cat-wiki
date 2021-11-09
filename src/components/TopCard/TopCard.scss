@@ -4,10 +4,21 @@
   grid-gap: 4.6rem;
   margin-bottom: 5.5rem;
 
+  @media (max-width: 46.25em) {
+    grid-template-columns: 1fr;
+  }
+
   &__img {
     height: 17rem;
     border-radius: 2.4rem;
     overflow: hidden;
+
+    @media (max-width: 46.25em) {
+      order: 2;
+      width: 50%;
+      height: auto;
+      margin: 0 auto;
+    }
 
     img {
       width: 100%;

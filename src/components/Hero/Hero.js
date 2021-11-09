@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Hero.scss';
 import svgImg from '../../assets/images/catwikilogowhite.svg';
 import { Link } from 'react-router-dom';
@@ -7,14 +7,17 @@ function Hero({ catBreedList }) {
   const [isFocus, setIsFocus] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleFocus = () => {
-    setIsFocus(true);
-  };
+  const formRef = useRef();
 
-  const blurHandler = () => {
-    const timer = setTimeout(() => setIsFocus(false), 300);
-    return clearTimeout(timer);
-  };
+  useEffect(() => {
+    const handler = (event) => {
+      if (!formRef.current.contains(event.target)) {
+        setIsFocus(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  });
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -22,7 +25,6 @@ function Hero({ catBreedList }) {
 
   const handleBreedChoice = (name) => {
     setSearchTerm(name);
-    blurHandler();
   };
 
   const filteredList = catBreedList.filter((item) =>
@@ -40,8 +42,6 @@ function Hero({ catBreedList }) {
       <li className='no-result'>No result</li>
     );
 
-  const submitHandler = (event) => event.preventDefault();
-
   return (
     <div className='hero'>
       <h1 className='heading'>
@@ -50,24 +50,43 @@ function Hero({ catBreedList }) {
           Get to know more about your cat breed
         </span>
       </h1>
-      <form className='search' onBlur={blurHandler} onSubmit={submitHandler}>
+      <div className='search' ref={formRef}>
         <input
           type='text'
           className='search__input'
           placeholder='Enter cat breed'
           autoComplete='off'
-          onFocus={handleFocus}
           onChange={handleInputChange}
           value={searchTerm}
+          onClick={() => setIsFocus(true)}
         />
         <span className='material-icons search__icon'>search</span>
 
         {isFocus && (
           <div className='search__sugg-container'>
+            <div className='search__clostBtn'>
+              <span
+                className='material-icons'
+                onClick={() => setIsFocus(false)}
+              >
+                close
+              </span>
+            </div>
+            <div className='search__phone'>
+              <input
+                type='text'
+                className='search__input'
+                placeholder='Enter cat breed'
+                autoComplete='off'
+                onChange={handleInputChange}
+                value={searchTerm}
+              />
+              <span className='material-icons search__icon'>search</span>
+            </div>
             <ul className='search__suggestion'>{resultList}</ul>
           </div>
         )}
-      </form>
+      </div>
     </div>
   );
 }

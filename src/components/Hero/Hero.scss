@@ -60,6 +60,33 @@
     right: 5%;
   }
 
+  &__phone {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5.9rem;
+    display: none;
+
+    @media (max-width: 26.5625em) {
+      display: flex;
+    }
+  }
+
+  &__clostBtn {
+    display: none;
+    justify-content: flex-end;
+    @media (max-width: 26.5625em) {
+      display: flex;
+    }
+
+    span {
+      display: inline-block;
+      padding: 1.5rem;
+    }
+  }
+
   &__sugg-container {
     width: 100%;
     position: absolute;
@@ -70,15 +97,23 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 2.4rem;
     z-index: 1;
+
+    @media (max-width: 26.5625em) {
+      position: fixed;
+      top: 0;
+    }
   }
 
   &__suggestion {
     width: 100%;
-    height: auto;
     max-height: 22rem;
     list-style: none;
     overflow-y: auto;
     animation: searchItems 300ms ease-in;
+
+    @media (max-width: 26.5625em) {
+      min-height: 100vh;
+    }
 
     li {
       font-weight: 500;
@@ -110,6 +145,7 @@
 
   .no-result {
     color: #ccc;
+    padding: 1rem;
     &:hover {
       background: unset;
     }
