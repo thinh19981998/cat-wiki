@@ -1,8 +1,12 @@
 .hero {
-  background: url('../../assets/images/HeroImagemd.png') no-repeat;
+  background: url('../../assets/images/HeroImagesm.png') no-repeat center;
   background-size: cover;
   padding: 10%;
   border-radius: 4.2rem 4.2rem 0 0;
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em) {
+    background: url('../../assets/images/HeroImagemd.png') no-repeat center;
+  }
 }
 
 .heading {
