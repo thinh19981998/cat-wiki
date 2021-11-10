@@ -134,6 +134,10 @@
       &:hover {
         background: #ccc;
       }
+
+      &.active {
+        background: #ccc;
+      }
     }
 
     &::-webkit-scrollbar {
