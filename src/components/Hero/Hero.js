@@ -40,7 +40,10 @@ function Hero({ catBreedList }) {
 
   const showSuggestion = () => setIsFocus(true);
 
-  const hideSuggestion = () => setIsFocus(false);
+  const hideSuggestion = () => {
+    setCursor(-1);
+    setIsFocus(false);
+  };
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -56,21 +59,6 @@ function Hero({ catBreedList }) {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const resultList =
-    filteredList.length > 0 ? (
-      filteredList.map((item, index) => (
-        <li
-          onClick={handleBreedChoice.bind(null, item.name)}
-          key={item.id}
-          className={`${index === cursor ? 'active' : ''}`}
-        >
-          <Link to={`/breed/${item.id}`}>{item.name}</Link>
-        </li>
-      ))
-    ) : (
-      <li className='no-result'>No result</li>
-    );
-
   const keyboardNavigation = (e) => {
     if (e.key === 'ArrowDown') {
       isFocus
@@ -78,7 +66,7 @@ function Hero({ catBreedList }) {
         : showSuggestion();
     }
     if (e.key === 'ArrowUp') {
-      setCursor((c) => (c > 0 ? c - 1 : 0));
+      isFocus ? setCursor((c) => (c > 0 ? c - 1 : 0)) : showSuggestion();
     }
     if (e.key === 'Escape') {
       hideSuggestion();
@@ -89,6 +77,22 @@ function Hero({ catBreedList }) {
       history.push(`/breed/${filteredList[cursor].id}`);
     }
   };
+
+  const resultList =
+    filteredList.length > 0 ? (
+      filteredList.map((item, index) => (
+        <li
+          onClick={handleBreedChoice.bind(null, item.name)}
+          key={item.id}
+          className={`${index === cursor ? 'active' : ''}`}
+        >
+          {item.image && <img src={item.image.url} alt='' />}
+          <Link to={`/breed/${item.id}`}>{item.name}</Link>
+        </li>
+      ))
+    ) : (
+      <li className='no-result'>No result</li>
+    );
 
   return (
     <div className='hero'>

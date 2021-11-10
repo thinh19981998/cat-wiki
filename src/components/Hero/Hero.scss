@@ -124,6 +124,8 @@
       font-size: 1.8rem;
       line-height: 2.2rem;
       border-radius: 2.2rem;
+      display: flex;
+      padding: 1rem;
       a {
         padding: 2rem;
         display: inline-block;
@@ -137,6 +139,14 @@
 
       &.active {
         background: #ccc;
+      }
+
+      img {
+        width: 6rem;
+        height: 6rem;
+        object-fit: contain;
+        border: 1px solid #ccc;
+        border-radius: 5px;
       }
     }
 
